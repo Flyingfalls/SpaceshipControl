@@ -1,10 +1,11 @@
 using UnityEngine;
 using Unity.Netcode;
 
-public class DisplayManager : MonoBehaviour
+public class NetworkDelegator : MonoBehaviour
 {
     private static NetworkManager MyNetworkManager;
-    private string IPAddress = "";
+    private string IPAddress = "172.30.141.125";
+    private string Port = "7777";
 
     private void Awake()
     {
@@ -19,7 +20,9 @@ public class DisplayManager : MonoBehaviour
 
             GUILayout.Label("IP Address");
             IPAddress = GUILayout.TextField(IPAddress);
-            gameObject.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>().SetConnectionData(IPAddress, 7777);
+            GUILayout.Label("Port");
+            Port = GUILayout.TextField(Port);
+            gameObject.GetComponent<Unity.Netcode.Transports.UTP.UnityTransport>().SetConnectionData(IPAddress, ushort.Parse(Port));
         }
         GUILayout.EndArea();
     }

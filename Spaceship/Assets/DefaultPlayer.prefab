@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4963011585058868414}
-  - component: {fileID: 3871843080096924622}
+  - component: {fileID: -4456077048983753714}
   - component: {fileID: -3134836414555558930}
   m_Layer: 0
   m_Name: DefaultPlayer
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3871843080096924622
+--- !u!114 &-4456077048983753714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2106728099
+  GlobalObjectIdHash: 2979100283
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -70,3 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cba15122f54d79d45acc45bf46243ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  LockDisplay: 0
+  CurrentDisplay: 0
+  CurrentMode: 0
+  Asteroid: {fileID: 3913059800781204079, guid: 6b0c35a6d74e7b948a9a1c6529e82d5f, type: 3}

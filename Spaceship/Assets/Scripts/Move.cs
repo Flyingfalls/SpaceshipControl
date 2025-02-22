@@ -8,9 +8,7 @@ public class Move : NetworkBehaviour
 
     //The Ship moves this amount every 0.02 Seconds.
     public float speed = 0.01f;
-
     public float turnSpeed = 0.01f;
-
     public float targetHeading = -45;
     public float currentHeading = 0;
 
@@ -79,6 +77,8 @@ public class Move : NetworkBehaviour
         //If the heading falls bellow zero, it loops around to 360.
         if (targetHeading < 0)
             targetHeading += 360;
+        else if (targetHeading > 360)
+            targetHeading -= 360;
     }
 
 
@@ -91,9 +91,41 @@ public class Move : NetworkBehaviour
 
         UpdateHeading();
 
-        CommandPromt.InstanceCommandPromt.GetComponent<CommandPromt>().DisplayCommand(TurnMessage 
-            + "\n\n<Turning Sequence Intiated. Turning ship to " + targetHeading + " degrees>");
+        CommandPromt.InstanceCommandPromt.DisplayCommandRpc(
+            "< Initiating RCS Startup Sequence >\n " +
+            "\n " +
+            "Attempting Ignition of RCS Array 1….\n" +
+            "RCS Array 1 Ignition Failed!\n " +
+            "\n " +
+            "Attempting Ignition of RCS Array 2….\n " +
+            "RCS Array 2 Ignition Successful! \n " +
+            "\n " +
+            "Attempting Ignition of RCS Array 3….\n " +
+            "RCS Array 3 Ignition Successful!\n " +
+            "\n " +
+            "Attempting Ignition of RCS Array 4….\n " +
+            "RCS Array 4 Ignition Failed!\n " +
+            "\n"
+            + "\n<Turning Sequence Intiated. Turning ship to " + targetHeading + " degrees>");
     }
+
+    [Rpc(SendTo.Server)]
+    public void setSpeedRpc(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    [Rpc(SendTo.Server)]
+    public void setTurnRateRpc(float newSpeed)
+    {
+        turnSpeed = newSpeed;
+    }
+
+    //[Rpc(SendTo.Server)]
+    //public void setTurnRpc(float newHeading)
+    //{
+    //    transform.Rotate(new Vector3(0, 0, newHeading), Space.Self);
+    //}
 
     [Rpc(SendTo.Server)]
     public void jumpRpc()
